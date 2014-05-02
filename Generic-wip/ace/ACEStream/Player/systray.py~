@@ -518,7 +518,7 @@ class PlayerOptionsDialog(wx.Dialog):
         self.debug_level = bgapp.debug_level
         self.total_max_connects = self.bgapp.get_playerconfig('total_max_connects', 200)
         self.download_max_connects = self.bgapp.get_playerconfig('download_max_connects', 50)
-        auto_down_limit = self.bgapp.get_playerconfig('auto_download_limit', True)
+        auto_down_limit = self.bgapp.get_playerconfig('auto_download_limit', False)
         wait_sufficient_speed = self.bgapp.get_playerconfig('wait_sufficient_speed', False)
         enable_http_support = self.bgapp.get_playerconfig('enable_http_support', True)
         enable_interruptable_ads = self.bgapp.get_playerconfig('enable_interruptable_ads', True)

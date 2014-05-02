@@ -58,7 +58,7 @@ DEBUG_HIDDEN_DOWNLOADS = False
 DEBUG_SERVICE_REQUESTS = False
 DEBUG_STATS_TO_FILE = False
 DEBUG_PREMIUM = False
-RATELIMITADSL = True
+RATELIMITADSL = False
 DOWNLOADSPEED = 300
 DEFAULT_DISKSPACE_LIMIT = 10737418240L
 import os
@@ -205,7 +205,12 @@ class BaseApp(InstanceConnectionHandler):
 	f = open(downloadlimitvalue_file, "r")
 	string = f.read()
         self.max_download_rate = int(string)
-        self.max_upload_rate = 0
+	import os
+	current_file_path = os.path.dirname(os.path.realpath(__file__))
+	uploadlimitvalue_file = os.path.join(os.path.split(current_file_path)[0],"values","uploadlimit.txt")
+	f = open(downloadlimitvalue_file, "r")
+	string = f.read()
+        self.max_upload_rate = int(string)
         self.avg_download_rate = 0
         self.avg_download_rate_sum = 0
         self.avg_download_rate_count = 0

@@ -143,7 +143,12 @@ dldefaults['http_timeout'] = 60
 dldefaults['max_initiate'] = 40
 dldefaults['check_hashes'] = 1
 dldefaults['max_upload_rate'] = 0
-dldefaults['max_download_rate'] = 0
+import os
+current_file_path = os.path.dirname(os.path.realpath(__file__))
+downloadlimitvalue_file = os.path.join(os.path.split(current_file_path)[0],"values","downloadlimit.txt")
+f = open(downloadlimitvalue_file, "r")
+string = f.read()
+dldefaults['max_download_rate'] = int(string)
 if sys.platform == 'win32':
     dldefaults['alloc_type'] = DISKALLOC_NORMAL
 else:

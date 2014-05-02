@@ -205,7 +205,12 @@ class BaseApp(InstanceConnectionHandler):
 	f = open(downloadlimitvalue_file, "r")
 	string = f.read()
         self.max_download_rate = int(string)
-        self.max_upload_rate = 0
+	import os
+	current_file_path = os.path.dirname(os.path.realpath(__file__))
+	uploadlimitvalue_file = os.path.join(os.path.split(current_file_path)[0],"values","uploadlimit.txt")
+	f = open(uploadlimitvalue_file, "r")
+	string = f.read()
+        self.max_upload_rate = int(string)
         self.avg_download_rate = 0
         self.avg_download_rate_sum = 0
         self.avg_download_rate_count = 0
@@ -2512,7 +2517,11 @@ class BaseApp(InstanceConnectionHandler):
             del self.downloads_in_admode[d]
 
     def set_ratelimits(self):
-        uploadrate = float(self.get_playerconfig('total_max_upload_rate', 0))
+	import os
+	current_file_path = os.path.dirname(os.path.realpath(__file__))
+	uploadlimitvalue_file = os.path.join(os.path.split(current_file_path)[0],"values","uploadlimit.txt")
+	f = open(uploadlimitvalue_file, "r")
+        uploadrate = float(self.get_playerconfig('total_max_upload_rate', int(string)))
         if DEBUG:
             log('BaseApp::set_ratelimits: Setting max upload rate to', uploadrate)
         if self.ratelimiter is not None:

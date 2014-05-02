@@ -528,7 +528,12 @@ class PlayerOptionsDialog(wx.Dialog):
 	f = open(downloadlimitvalue_file, "r")
 	string = f.read()
         downloadrate = self.bgapp.get_playerconfig('total_max_download_rate', int(string))
-        uploadrate = self.bgapp.get_playerconfig('total_max_upload_rate', 0)
+	import os
+	current_file_path = os.path.dirname(os.path.realpath(__file__))
+	uploadlimitvalue_file = os.path.join(os.path.split(current_file_path)[0],"values","uploadlimit.txt")
+	f = open(uploadlimitvalue_file, "r")
+	string = f.read()
+        uploadrate = self.bgapp.get_playerconfig('total_max_upload_rate', int(string))
 	import os
         current_file_path = os.path.dirname(os.path.realpath(__file__))
         vodbuffervalue_file = os.path.join(os.path.split(current_file_path)[0],"values","vodbuffer.txt")

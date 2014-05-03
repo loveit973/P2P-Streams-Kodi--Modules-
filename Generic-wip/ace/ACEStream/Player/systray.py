@@ -516,8 +516,18 @@ class PlayerOptionsDialog(wx.Dialog):
         self.icons = icons
         self.port = None
         self.debug_level = bgapp.debug_level
-        self.total_max_connects = self.bgapp.get_playerconfig('total_max_connects', 200)
-        self.download_max_connects = self.bgapp.get_playerconfig('download_max_connects', 50)
+	import os
+	current_file_path = os.path.dirname(os.path.realpath(__file__))
+	maxconnections_file = os.path.join(os.path.split(current_file_path)[0],"values","maxconnections.txt")
+	f = open(maxconnections_file, "r")
+	string = f.read()
+        self.total_max_connects = self.bgapp.get_playerconfig('total_max_connects', int(string))
+	import os
+	current_file_path = os.path.dirname(os.path.realpath(__file__))
+	maxconnectionsstream_file = os.path.join(os.path.split(current_file_path)[0],"values","maxconnectionsstream.txt")
+	f = open(maxconnectionsstream_file, "r")
+	string = f.read()
+        self.download_max_connects = self.bgapp.get_playerconfig('download_max_connects', int(string))
         auto_down_limit = self.bgapp.get_playerconfig('auto_download_limit', False)
         wait_sufficient_speed = self.bgapp.get_playerconfig('wait_sufficient_speed', False)
         enable_http_support = self.bgapp.get_playerconfig('enable_http_support', True)

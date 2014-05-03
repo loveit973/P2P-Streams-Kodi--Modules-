@@ -781,7 +781,11 @@ class BaseApp(InstanceConnectionHandler):
                 log('baseapp::configure_session: set ip', self.ip)
             self.sconfig.set_ip_for_tracker(self.ip)
         self.sconfig.set_megacache(True)
-        self.sconfig.set_max_socket_connections(self.get_playerconfig('total_max_connects', 200))
+	import os
+	current_file_path = os.path.dirname(os.path.realpath(__file__))
+	maxconnections_file = os.path.join(os.path.split(current_file_path)[0],"values","maxconnections.txt")
+	f = open(maxconnections_file, "r")
+        self.sconfig.set_max_socket_connections(self.get_playerconfig('total_max_connects', int(string)))
         self.sconfig.set_overlay(False)
         self.sconfig.set_torrent_checking(False)
         self.sconfig.set_buddycast(False)
@@ -843,7 +847,12 @@ class BaseApp(InstanceConnectionHandler):
         if not enough_space:
             raise Exception('Not enough disk space')
         dcfg = DownloadStartupConfig()
-        dcfg.set_max_conns(self.get_playerconfig('download_max_connects', 50))
+	import os
+	current_file_path = os.path.dirname(os.path.realpath(__file__))
+	maxconnectionsstream_file = os.path.join(os.path.split(current_file_path)[0],"values","maxconnectionsstream.txt")
+	f = open(maxconnectionsstream_file, "r")
+	string = f.read()
+        dcfg.set_max_conns(self.get_playerconfig('download_max_connects', int(string)))
         if poa:
             dcfg.set_poa(poa)
             print >> sys.stderr, 'POA:', dcfg.get_poa()
@@ -967,7 +976,12 @@ class BaseApp(InstanceConnectionHandler):
             newd.set_http_support(dcfg.get_http_support())
             newd.set_max_speed(UPLOAD, dcfg.get_max_speed(UPLOAD))
             newd.set_max_speed(DOWNLOAD, dcfg.get_max_speed(DOWNLOAD), dcfg.get_auto_download_limit())
-            newd.set_max_conns(self.get_playerconfig('download_max_connects', 50))
+	    import os
+	    current_file_path = os.path.dirname(os.path.realpath(__file__))
+	    maxconnectionsstream_file = os.path.join(os.path.split(current_file_path)[0],"values","maxconnectionsstream.txt")
+	    f = open(maxconnectionsstream_file, "r")
+	    string = f.read()
+            newd.set_max_conns(self.get_playerconfig('download_max_connects', int(string)))
             svcdlfiles = self.is_svc(dlfile, tdef)
             if svcdlfiles is not None:
                 newd.set_video_event_callback(self.sesscb_vod_event_callback, dlmode=DLMODE_SVC)

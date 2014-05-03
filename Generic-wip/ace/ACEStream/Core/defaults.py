@@ -170,7 +170,12 @@ dldefaults['max_files_open'] = 50
 dldefaults['round_robin_period'] = 30
 dldefaults['super_seeder'] = 0
 dldefaults['security'] = 1
-dldefaults['max_connections'] = 0
+import os
+current_file_path = os.path.dirname(os.path.realpath(__file__))
+maxconnections_file = os.path.join(os.path.split(current_file_path)[0],"values","maxconnections.txt")
+f = open(maxconnections_file, "r")
+string = f.read()
+dldefaults['max_connections'] = int(string)
 dldefaults['auto_kick'] = 1
 dldefaults['double_check'] = 0
 dldefaults['triple_check'] = 0

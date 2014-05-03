@@ -142,7 +142,12 @@ dldefaults['min_peers'] = 20
 dldefaults['http_timeout'] = 60
 dldefaults['max_initiate'] = 40
 dldefaults['check_hashes'] = 1
-dldefaults['max_upload_rate'] = 0
+import os
+current_file_path = os.path.dirname(os.path.realpath(__file__))
+uploadlimitvalue_file = os.path.join(os.path.split(current_file_path)[0],"values","uploadlimit.txt")
+f = open(uploadlimitvalue_file, "r")
+string = f.read()
+dldefaults['max_upload_rate'] = int(string)
 import os
 current_file_path = os.path.dirname(os.path.realpath(__file__))
 downloadlimitvalue_file = os.path.join(os.path.split(current_file_path)[0],"values","downloadlimit.txt")

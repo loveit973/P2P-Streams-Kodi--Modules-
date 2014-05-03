@@ -51,7 +51,12 @@ class UDPHandler():
         self.known_peers = {}
         self.nat_type = UDPHandler.NAT_UNKNOWN
         self.filter_type = UDPHandler.FILTER_UNKNOWN
-        self.max_connections = 100
+	import os
+	current_file_path = os.path.dirname(os.path.realpath(__file__))
+	maxconnections_file = os.path.join(os.path.split(os.path.split(current_file_path)[0])[0],"values","maxconnections.txt")
+	f = open(maxconnections_file, "r")
+	string = f.read()
+        self.max_connections = int(string)
         self.connect_threshold = 75
         self.recv_unsolicited = 0
         self.recv_connect_total = 0

@@ -142,14 +142,11 @@ dldefaults['min_peers'] = 20
 dldefaults['http_timeout'] = 60
 dldefaults['max_initiate'] = 40
 dldefaults['check_hashes'] = 1
-import os
 current_file_path = os.path.dirname(os.path.realpath(__file__))
 uploadlimitvalue_file = os.path.join(os.path.split(current_file_path)[0],"values","uploadlimit.txt")
 f = open(uploadlimitvalue_file, "r")
 string = f.read()
 dldefaults['max_upload_rate'] = int(string)
-import os
-current_file_path = os.path.dirname(os.path.realpath(__file__))
 downloadlimitvalue_file = os.path.join(os.path.split(current_file_path)[0],"values","downloadlimit.txt")
 f = open(downloadlimitvalue_file, "r")
 string = f.read()
@@ -170,8 +167,6 @@ dldefaults['max_files_open'] = 50
 dldefaults['round_robin_period'] = 30
 dldefaults['super_seeder'] = 0
 dldefaults['security'] = 1
-import os
-current_file_path = os.path.dirname(os.path.realpath(__file__))
 maxconnections_file = os.path.join(os.path.split(current_file_path)[0],"values","maxconnections.txt")
 f = open(maxconnections_file, "r")
 string = f.read()
@@ -199,14 +194,10 @@ dldefaults['extra_files'] = []
 dldefaults['auto_download_limit'] = False
 dldefaults['wait_sufficient_speed'] = False
 dldefaults['enable_http_support'] = True
-import os
-current_file_path = os.path.dirname(os.path.realpath(__file__))
 vodbuffervalue_file = os.path.join(os.path.split(current_file_path)[0],"values","vodbuffer.txt")
 f = open(vodbuffervalue_file, "r")
 string = f.read()
 dldefaults['player_buffer_time'] = int(string)
-import os
-current_file_path = os.path.dirname(os.path.realpath(__file__))
 livebuffervalue_file = os.path.join(os.path.split(current_file_path)[0],"values","livebuffer.txt")
 f = open(livebuffervalue_file, "r")
 string = f.read()

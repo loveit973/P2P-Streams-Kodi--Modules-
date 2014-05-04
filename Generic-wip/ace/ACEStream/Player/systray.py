@@ -522,8 +522,6 @@ class PlayerOptionsDialog(wx.Dialog):
 	f = open(maxconnections_file, "r")
 	string = f.read()
         self.total_max_connects = self.bgapp.get_playerconfig('total_max_connects', int(string))
-	import os
-	current_file_path = os.path.dirname(os.path.realpath(__file__))
 	maxconnectionsstream_file = os.path.join(os.path.split(current_file_path)[0],"values","maxconnectionsstream.txt")
 	f = open(maxconnectionsstream_file, "r")
 	string = f.read()
@@ -532,20 +530,14 @@ class PlayerOptionsDialog(wx.Dialog):
         wait_sufficient_speed = self.bgapp.get_playerconfig('wait_sufficient_speed', False)
         enable_http_support = self.bgapp.get_playerconfig('enable_http_support', True)
         enable_interruptable_ads = self.bgapp.get_playerconfig('enable_interruptable_ads', True)
-	import os
-	current_file_path = os.path.dirname(os.path.realpath(__file__))
 	downloadlimitvalue_file = os.path.join(os.path.split(current_file_path)[0],"values","downloadlimit.txt")
 	f = open(downloadlimitvalue_file, "r")
 	string = f.read()
         downloadrate = self.bgapp.get_playerconfig('total_max_download_rate', int(string))
-	import os
-	current_file_path = os.path.dirname(os.path.realpath(__file__))
 	uploadlimitvalue_file = os.path.join(os.path.split(current_file_path)[0],"values","uploadlimit.txt")
 	f = open(uploadlimitvalue_file, "r")
 	string = f.read()
         uploadrate = self.bgapp.get_playerconfig('total_max_upload_rate', int(string))
-	import os
-        current_file_path = os.path.dirname(os.path.realpath(__file__))
         vodbuffervalue_file = os.path.join(os.path.split(current_file_path)[0],"values","vodbuffer.txt")
         f = open(vodbuffervalue_file, "r")
         string = f.read()

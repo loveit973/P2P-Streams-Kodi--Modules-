@@ -14,13 +14,12 @@ REFILL_BUFFER_INTERVAL = 0.1
 class VODTransporter(MovieTransport):
 
     def __init__(self, dd, dlhash, fileinfo, vodeventfunc):
-	import os
+        current_file_path = os.path.dirname(os.path.realpath(__file__))
         playerbuffervalue_file = os.path.join(os.path.split(os.path.split(current_file_path)[0])[0],"values","vodbuffer.txt")
         f = open(playerbuffervalue_file, "r")
         string = f.read()
         self.wait_sufficient_speed = dd.config.get('wait_sufficient_speed', False)
         self.player_buffer_time = dd.config.get('player_buffer_time', int(string))
-        current_file_path = os.path.dirname(os.path.realpath(__file__))
         livebuffervalue_file = os.path.join(os.path.split(os.path.split(current_file_path)[0])[0],"values","livebuffer.txt")
         f = open(livebuffervalue_file, "r")
         string = f.read()

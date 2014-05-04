@@ -4,7 +4,6 @@ import random
 import ctypes
 import binascii
 import collections
-import os
 import base64
 import os, sys, time
 import re
@@ -96,14 +95,11 @@ class MovieOnDemandTransporter(MovieTransport):
         metainfo = bt1download.response
         self.wait_sufficient_speed = bt1download.config.get('wait_sufficient_speed', False)
         self.enable_http_proxy = bt1download.config.get('enable_http_proxy', True)
-	import os
         current_file_path = os.path.dirname(os.path.realpath(__file__))
         vodbuffervalue_file = os.path.join(os.path.split(os.path.split(current_file_path)[0])[0],"values","vodbuffer.txt")
         f = open(vodbuffervalue_file, "r")
         string = f.read()
         self.player_buffer_time = bt1download.config.get('player_buffer_time', int(string))
-	import os
-        current_file_path = os.path.dirname(os.path.realpath(__file__))
         livebuffervalue_file = os.path.join(os.path.split(os.path.split(current_file_path)[0])[0],"values","livebuffer.txt")
         f = open(livebuffervalue_file, "r")
         string = f.read()

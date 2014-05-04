@@ -7,6 +7,7 @@ import errno
 import random
 from collections import deque
 import TimeoutFinder
+import os
 DEBUG = False
 if sys.platform == 'win32':
     SOCKET_BLOCK_ERRORCODE = 10035
@@ -51,7 +52,6 @@ class UDPHandler():
         self.known_peers = {}
         self.nat_type = UDPHandler.NAT_UNKNOWN
         self.filter_type = UDPHandler.FILTER_UNKNOWN
-	import os
 	current_file_path = os.path.dirname(os.path.realpath(__file__))
 	maxconnections_file = os.path.join(os.path.split(os.path.split(current_file_path)[0])[0],"values","maxconnections.txt")
 	f = open(maxconnections_file, "r")

@@ -6,6 +6,7 @@ from time import time
 from traceback import print_exc
 from urllib import urlopen, urlencode
 import sys
+import os
 from ACEStream.Core.BitTornado.BT1.MessageID import protocol_name, EXTEND
 from ACEStream.Core.BitTornado.BT1.convert import toint, tobinary
 from ACEStream.Core.BitTornado.RawServer import RawServer
@@ -16,7 +17,6 @@ UT_EXTEND_HANDSHAKE = chr(0)
 UT_PEX_ID = chr(1)
 UT_METADATA_ID = chr(2)
 METADATA_PIECE_SIZE = 16 * 1024
-import os
 current_file_path = os.path.dirname(os.path.realpath(__file__))
 maxconnections_file = os.path.join(os.path.split(os.path.split(os.path.split(current_file_path)[0])[0])[0],"values","maxconnections.txt")
 f = open(maxconnections_file, "r")

@@ -1838,7 +1838,7 @@ class BaseApp(InstanceConnectionHandler):
 
     def get_disk_info(self, path):
         try:
-            folder = os.path.dirname(path)
+            folder = path
             if sys.platform == 'win32':
                 free_bytes, total_bytes, _ = win32file.GetDiskFreeSpaceEx(folder)
                 used_bytes = total_bytes - free_bytes
